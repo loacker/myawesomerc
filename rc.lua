@@ -10,8 +10,8 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
--- Lain library
-local naughty = require("lain")
+-- Net Widgets
+local net_widgets = require("net_widgets")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -114,6 +114,10 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
+-- Create a network widget
+mynet_wireless = net_widgets.wireless({interface = "wlan0"})
+mynet_wired = net_widgets.indicator({interfaces = {"eth0"}, timeout = 5})
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -193,8 +197,11 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(mynet_wireless)
+    right_layout:add(mynet_wired)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
+
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
