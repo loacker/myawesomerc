@@ -8,13 +8,10 @@ The script start a a nested xorg-server in background using Xephyr.
 ~~~
 (master):matteo@mobyfdick:awesome $ ./test.sh 
 
-Simple shell script to check the test the awesome wm configuration file.
+Simple shell script to test the awesome wm configuration file.
 Start a nested xorg-server in background using Xephyr.
 The parent directory of this script need to be called 'awesome' because the wm
 search for the configuration file in the directory '$XDG_CONFIG_HOME/awesome/'
-and here we set '$XDG_CONFIG_HOME' to /home/matteo/projects/awesome, otherwise the import of library
-like 'lain' generate errors.
-
 
 Usage:
    test.sh [-s|--size <size>] [-d|--display <display>] filename
