@@ -1,3 +1,6 @@
 [submodule "net_widgets"]
 	path = net_widgets
 	url = http://github.com/plotnikovanton/net_widgets.git
+[submodule "caps-osd"]
+	path = caps-osd
+	url = https://github.com/schtibe/caps-osd.git

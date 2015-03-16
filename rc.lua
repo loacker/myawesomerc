@@ -12,6 +12,9 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 -- Net Widgets
 local net_widgets = require("net_widgets")
+-- Caps-Lock
+local caps_pid = awful.util.spawn("/home/matteo/.config/awesome/caps-osd/caps-osd")
+
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -280,7 +283,10 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+
+    -- CapsLock
+    awful.key({}, "Caps_Lock", NULL, function() awful.util.spawn("kill -USR1 " .. caps_pid) end)
 )
 
 clientkeys = awful.util.table.join(
